@@ -2,10 +2,10 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Antonio, League_Spartan } from 'next/font/google';
 import Image from 'next/image';
-import backgroundImage from '@/public/assets/starter-code/assets/background-stars.svg';
+import backgroundImage from '@/public/assets/background-stars.svg';
 import DataProvider from './_lib/DataContext';
 import Navbar from './home/navbar';
-import ImagePlanet from './components/ImagePlanet';
+import { ReactNode } from 'react';
 
 const antonio = Antonio({
   display: 'swap',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   applicationName: 'Planets fact site',
 } as const;
 
-export default function RootLayout() {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
@@ -47,21 +47,7 @@ export default function RootLayout() {
           alt="background image"
         />
         <Navbar />
-        <DataProvider>
-          <div className="mx-auto flex max-w-[1110px] justify-between pl-[170px]">
-            <div className="mt-[242px] size-[290px] bg-white">
-              <ImagePlanet />
-            </div>
-            <div className="mt-[126px] h-[541px] w-[350px] bg-white"></div>
-          </div>
-          <ul className="mx-auto mt-[87px] flex w-full max-w-[1110px] justify-between gap-[30px]">
-            {[1, 2, 3, 4].map((item) => (
-              <li className="h-[128px] w-[255px] bg-white" key={item}>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </DataProvider>
+        <DataProvider>{children}</DataProvider>
       </body>
     </html>
   );

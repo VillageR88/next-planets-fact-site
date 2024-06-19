@@ -1,4 +1,4 @@
-import dataJson from '@/public/assets/starter-code/data.json';
+import dataJson from '@/public/assets/data.json';
 import Link from 'next/link';
 
 export default function Navbar() {
