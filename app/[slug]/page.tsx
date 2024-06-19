@@ -1,3 +1,6 @@
-export default function Planet() {
-  return <div className="text-white"></div>;
+import Image from 'next/image';
+import { tPlanet } from '@/app/_lib/interfaces';
+
+export default function Planet({ dataPlanet }: { dataPlanet: string }) {
+  return <main className="text-white">{dataPlanet}</main>;
 }

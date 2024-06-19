@@ -1,4 +1,4 @@
-export interface Planet {
+export interface tPlanet {
   name: string;
   overview: {
     content: string;

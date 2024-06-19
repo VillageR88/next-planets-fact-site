@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 h4 {
-  @apply font-leagueSpartan text-white text-[11px] font-bold leading-[25px] tracking-[1px]
+  @apply font-leagueSpartan text-white text-[13px] font-semibold leading-[25px] tracking-[1.3px]
 }
