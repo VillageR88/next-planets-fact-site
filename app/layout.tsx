@@ -3,8 +3,6 @@ import type { Metadata } from 'next';
 import { Antonio, League_Spartan } from 'next/font/google';
 import Image from 'next/image';
 import backgroundImage from '@/public/assets/background-stars.svg';
-import DataProvider from './_lib/DataContext';
-import Navbar from './home/navbar';
 import { ReactNode } from 'react';
 
 const antonio = Antonio({
@@ -46,8 +44,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           src={backgroundImage as string}
           alt="background image"
         />
-        <Navbar />
-        <DataProvider>{children}</DataProvider>
+        {children}
       </body>
     </html>
   );
