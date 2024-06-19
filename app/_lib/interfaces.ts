@@ -1,18 +1,24 @@
-export interface DataJson {
+export interface Planet {
   name: string;
-  year: number;
-  description: string;
-  source: string;
-  artist: {
-    image: string;
-    name: string;
+  overview: {
+    content: string;
+    source: string;
   };
+  structure: {
+    content: string;
+    source: string;
+  };
+  geology: {
+    content: string;
+    source: string;
+  };
+  rotation: string;
+  revolution: string;
+  radius: string;
+  temperature: string;
   images: {
-    thumbnail: string;
-    hero: {
-      small: string;
-      large: string;
-    };
-    gallery: string;
+    planet: string;
+    internal: string;
+    geology: string;
   };
 }

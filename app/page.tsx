@@ -1,5 +1,18 @@
 'use client';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { Planet } from './_lib/interfaces';
+import dataJson from '@/public/assets/starter-code/data.json';
 
 export default function Home() {
-  return <main className="mt-[40px] grid size-fit gap-[40px] md:grid-cols-2 xl:grid-cols-4">123</main>;
+  const router = useRouter();
+  const startPath =
+    (dataJson as Planet[]).find((planet) => planet.name === 'Mercury')?.name.toLowerCase() ??
+    dataJson[0].name.toLowerCase();
+
+  useEffect(() => {
+    router.push(startPath);
+  }, [router, startPath]);
+
+  return;
 }

@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h4 {
+  @apply font-leagueSpartan text-white text-[11px] font-bold leading-[25px] tracking-[1px]
+}
