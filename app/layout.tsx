@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { Antonio, League_Spartan } from 'next/font/google';
 import Image from 'next/image';
 import backgroundImage from '@/public/assets/starter-code/assets/background-stars.svg';
-import { ReactNode } from 'react';
 import DataProvider from './_lib/DataContext';
 import Navbar from './home/navbar';
 
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
   applicationName: 'Planets fact site',
 } as const;
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout() {
   return (
     <html lang="en">
       <head>
@@ -40,10 +39,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className={`${antonio.variable} ${leagueSpartan.variable} mx-auto w-full max-w-[90em] overflow-x-clip bg-[#070724]`}
       >
         <Image className="absolute -z-10 object-cover" fill src={backgroundImage as string} alt="background image" />
-        <>
-          <Navbar />
-          <DataProvider>{children}</DataProvider>
-        </>
+        <Navbar />
+        <DataProvider>
+          <div className="mx-auto flex max-w-[1110px] justify-between pl-[170px]">
+            <div className="mt-[242px] size-[290px] bg-white"></div>
+            <div className="mt-[126px] h-[541px] w-[350px] bg-white"></div>
+          </div>
+          <ul className="mx-auto mt-[87px] flex w-full max-w-[1110px] justify-between gap-[30px]">
+            {[1, 2, 3, 4].map((item) => (
+              <li className="h-[128px] w-[255px] bg-white" key={item}>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </DataProvider>
       </body>
     </html>
   );
