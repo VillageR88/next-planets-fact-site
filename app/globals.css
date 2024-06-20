@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 h1 {
-  @apply font-antonio text-[80px] font-medium text-white;
+  @apply font-antonio xl:text-[80px] text-[48px] font-medium text-white;
 }
 
 h2 {
-  @apply font-antonio text-[40px] tracking-[-1.5px] font-medium text-white;
+  @apply font-antonio text-[24px] font-medium tracking-[-0.9px] text-white xl:text-[40px] xl:tracking-[-1.5px];
 }
 h3 {
-  @apply font-leagueSpartan text-[12px] font-bold tracking-[1px] text-white;
+  @apply font-leagueSpartan xl:text-[12px] text-[11px] font-bold tracking-[1px] text-white;
 }
 h4 {
   @apply font-leagueSpartan text-[13px] font-semibold leading-[25px] tracking-[1.3px] text-white;

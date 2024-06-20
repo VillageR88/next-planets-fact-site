@@ -52,41 +52,43 @@ export default function Planet({ params }: { params: { planet: string; mode: str
   return (
     <>
       <Navbar planet={params.planet} mode={params.mode} />
-      <div className="mx-auto flex max-w-[1110px] justify-between">
-        <div className="relative mt-[122px] flex size-[613px] flex-col items-center justify-center">
+      <div className="mx-auto flex max-w-[1110px] flex-col justify-between xl:flex-row">
+        <div className="relative mx-auto flex size-[369px] min-h-[369px] translate-y-[10%] scale-75 flex-col items-center justify-center xl:mx-0 xl:mt-[100px] xl:size-[613px] xl:min-h-fit xl:translate-y-0 xl:scale-100">
           <ImagePlanet src={srcPlanet[params.mode as keyof typeof srcPlanet]} alt={`Image of ${data.name}`} />
           {additionalImage && (
             <Image
               width={163}
               height={199}
               src={additionalImage}
-              className="absolute left-1/2 top-0 mt-[390px] h-[199px] w-[163px] -translate-x-1/2"
+              className="absolute left-1/2 mt-[390px] h-[199px] w-[163px] -translate-x-1/2 xl:top-0"
               alt={`Image of ${data.name} geology`}
             />
           )}
         </div>
-        <div className="mt-[126px] h-[541px] w-[350px]">
-          <h1>{data.name.toUpperCase()}</h1>
-          <p className="mt-[23px]">
-            {
-              data[Object.entries(links).find(({ '1': value }) => value === params.mode)?.[0] as keyof typeof links]
-                .content
-            }
-          </p>
-          <div className="mt-[24px] flex items-center gap-[5px] text-[14px] text-white/50">
-            <span className="font-leagueSpartan font-normal">{titleSource}</span>
-            <Link
-              className="flex items-center gap-[9px] font-leagueSpartan font-bold underline"
-              href={
+        <div className="mx-auto mt-[79px] flex w-[689px] flex-row items-center justify-between xl:mx-0 xl:mt-[126px] xl:h-[541px] xl:w-[350px] xl:flex-col xl:justify-normal">
+          <div className="flex w-[321px] flex-col xl:w-fit">
+            <h1>{data.name.toUpperCase()}</h1>
+            <p className="mt-[23px]">
+              {
                 data[Object.entries(links).find(({ '1': value }) => value === params.mode)?.[0] as keyof typeof links]
-                  .source
+                  .content
               }
-            >
-              {titleWikipedia}
-              <Image priority className="size-fit" src={iconSource as string} alt="Icon source" />
-            </Link>
+            </p>
+            <div className="mt-[24px] flex items-center gap-[5px] text-[14px] text-white/50">
+              <span className="font-leagueSpartan font-normal">{titleSource}</span>
+              <Link
+                className="flex items-center gap-[9px] font-leagueSpartan font-bold underline"
+                href={
+                  data[Object.entries(links).find(({ '1': value }) => value === params.mode)?.[0] as keyof typeof links]
+                    .source
+                }
+              >
+                {titleWikipedia}
+                <Image priority className="size-fit" src={iconSource as string} alt="Icon source" />
+              </Link>
+            </div>
           </div>
-          <ul className="mt-[39px] flex h-[176px] w-full flex-col gap-[16px]">
+          <ul className="mt-[39px] flex h-[176px] w-[281px] flex-col gap-[16px] xl:w-full">
             {Object.values(Mode).map((item, index) => (
               <li key={index}>
                 <Link href={`/${params.planet}/${links[item]}`} passHref>
@@ -107,7 +109,7 @@ export default function Planet({ params }: { params: { planet: string; mode: str
           </ul>
         </div>
       </div>
-      <ul className="mx-auto mt-[87px] flex w-full max-w-[1110px] justify-between gap-[30px]">
+      <ul className="mx-auto mt-[27px] flex w-full max-w-[689px] justify-between gap-[30px] xl:mt-[87px] xl:max-w-[1110px]">
         {[
           { title: titleRotation, description: data.rotation },
           {
@@ -120,7 +122,10 @@ export default function Planet({ params }: { params: { planet: string; mode: str
             description: data.temperature,
           },
         ].map((item, index) => (
-          <li className="h-[128px] w-[255px] pl-[23px] pt-[20px] outline outline-1 outline-white/20" key={index}>
+          <li
+            className="flex h-[88px] w-[164px] flex-col items-start justify-center gap-[6px] pl-[23px] outline outline-1 outline-white/20 xl:h-[128px] xl:w-[255px] xl:gap-[4px]"
+            key={index}
+          >
             <h3 className="text-white/50">{item.title}</h3>
             <h2 className="text-white">{item.description.toUpperCase()}</h2>
           </li>
