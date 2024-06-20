@@ -7,7 +7,7 @@ const titleLogo = 'THE PLANETS';
 export default function Navbar({ planet, mode }: { planet: string; mode: string }) {
   return (
     <nav className="flex h-fit w-full flex-col">
-      <div className="flex h-[85px] w-full items-center justify-between px-[32px]">
+      <div className="flex h-[159px] w-full flex-col items-center justify-center gap-[39px] px-[32px] xl:h-[85px] xl:flex-row xl:justify-between">
         <span className="font-antonio text-[28px] font-medium tracking-[-1.05px] text-[white]">{titleLogo}</span>
         <ul className="flex gap-[33px]">
           {(dataJson as tPlanet[]).map(({ name }) => (
