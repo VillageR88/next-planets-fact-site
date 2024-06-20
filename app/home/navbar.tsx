@@ -1,6 +1,7 @@
 import dataJson from '@/public/assets/data.json';
 import Link from 'next/link';
 import { tPlanet } from '../_lib/interfaces';
+import ButtonMobileMenu from '../components/ButtonMobileMenu';
 
 const titleLogo = 'THE PLANETS';
 
@@ -17,9 +18,9 @@ const borderColor = {
 export default function Navbar({ planet, mode }: { planet: string; mode: string }) {
   return (
     <nav className="flex h-fit w-full flex-col">
-      <div className="flex h-[159px] w-full flex-col items-center justify-center gap-[39px] px-[32px] xl:h-[85px] xl:flex-row xl:justify-between">
+      <div className="flex h-[68px] w-full flex-row items-center justify-between gap-[39px] px-[32px] md:h-[159px] md:flex-col md:justify-center xl:h-[85px] xl:flex-row xl:justify-between">
         <span className="font-antonio text-[28px] font-medium tracking-[-1.05px] text-[white]">{titleLogo}</span>
-        <ul className="flex items-center gap-[33px] xl:h-full">
+        <ul className="hidden items-center gap-[33px] md:flex xl:h-full">
           {(dataJson as tPlanet[]).map(({ name }) => (
             <li
               className={`${name.toLowerCase() === planet ? '' : 'transition-colors'} flex h-full items-center border-t-4 border-transparent ${borderColor[name.toLowerCase() as keyof typeof borderColor]}`}
@@ -35,6 +36,7 @@ export default function Navbar({ planet, mode }: { planet: string; mode: string 
             </li>
           ))}
         </ul>
+        <ButtonMobileMenu />
       </div>
       <div className="h-px w-full border-b border-white/20" />
     </nav>
