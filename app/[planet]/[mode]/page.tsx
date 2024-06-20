@@ -5,7 +5,7 @@ import dataJson from '@/public/assets/data.json';
 import Link from 'next/link';
 import Navbar from '@/app/home/navbar';
 
-const colors = {
+const bgColor = {
   mercury: 'bg-[#419EBB]',
   venus: 'bg-[#EDA249]',
   earth: 'bg-[#6D2ED5]',
@@ -80,7 +80,7 @@ export default function Planet({ params }: { params: { planet: string; mode: str
               <li key={index}>
                 <Link href={`/${params.planet}/${links[item]}`} passHref>
                   <button
-                    className={`${params.mode === links[item] ? colors[params.planet as keyof typeof colors] : 'outline'} flex h-[48px] w-full items-center gap-[28px] pl-[28px] outline-1 outline-white/20`}
+                    className={`${params.mode === links[item] ? bgColor[params.planet as keyof typeof bgColor] : 'outline hover:bg-[#D8D8D8]/20'} flex h-[48px] w-full items-center gap-[28px] pl-[28px] outline-1 outline-white/20`}
                     type="button"
                   >
                     <span className="text-[12px] font-bold leading-[25px] tracking-[2.57px] text-white/50">
