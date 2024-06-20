@@ -22,12 +22,12 @@ const titleRotation = 'ROTATION TIME';
 const titleRevolution = 'REVOLUTION TIME';
 const titleRadius = 'RADIUS';
 const titleTemperature = 'AVERAGE TEMP.';
+
 enum Mode {
   overview = 'overview',
   structure = 'structure',
   geology = 'geology',
 }
-
 const titleButtons = {
   overview: 'OVERVIEW',
   structure: 'INTERNAL STRUCTURE',
@@ -48,10 +48,10 @@ export default function Planet({ params }: { params: { planet: string; mode: str
     'surface-geology': data.images.planet.slice(1),
   };
   const additionalImage = params.mode === links.geology ? data.images.geology.slice(1) : undefined;
-
+  console.log(data[Object.entries(links).find(([, value]) => value === params.mode)?.[0] as keyof typeof links].source);
   return (
     <>
-      <Navbar mode={params.mode} />
+      <Navbar planet={params.planet} mode={params.mode} />
       <div className="mx-auto flex max-w-[1110px] justify-between">
         <div className="relative mt-[122px] flex size-[613px] flex-col items-center justify-center">
           <ImagePlanet src={srcPlanet[params.mode as keyof typeof srcPlanet]} alt={`Image of ${data.name}`} />
@@ -67,10 +67,21 @@ export default function Planet({ params }: { params: { planet: string; mode: str
         </div>
         <div className="mt-[126px] h-[541px] w-[350px]">
           <h1>{data.name.toUpperCase()}</h1>
-          <p className="mt-[23px]">{data.overview.content}</p>
+          <p className="mt-[23px]">
+            {
+              data[Object.entries(links).find(({ '1': value }) => value === params.mode)?.[0] as keyof typeof links]
+                .content
+            }
+          </p>
           <div className="mt-[24px] flex items-center gap-[5px] text-[14px] text-white/50">
-            <span>{titleSource}</span>
-            <Link className="flex items-center gap-[9px] font-bold underline" href={data.overview.source}>
+            <span className="font-leagueSpartan font-normal">{titleSource}</span>
+            <Link
+              className="flex items-center gap-[9px] font-leagueSpartan font-bold underline"
+              href={
+                data[Object.entries(links).find(({ '1': value }) => value === params.mode)?.[0] as keyof typeof links]
+                  .source
+              }
+            >
               {titleWikipedia}
               <Image priority className="size-fit" src={iconSource as string} alt="Icon source" />
             </Link>
@@ -80,7 +91,7 @@ export default function Planet({ params }: { params: { planet: string; mode: str
               <li key={index}>
                 <Link href={`/${params.planet}/${links[item]}`} passHref>
                   <button
-                    className={`${params.mode === links[item] ? bgColor[params.planet as keyof typeof bgColor] : 'outline hover:bg-[#D8D8D8]/20'} flex h-[48px] w-full items-center gap-[28px] pl-[28px] outline-1 outline-white/20`}
+                    className={`${params.mode === links[item] ? bgColor[params.planet as keyof typeof bgColor] : 'outline transition-colors duration-100 hover:bg-[#D8D8D8]/20'} flex h-[48px] w-full items-center gap-[28px] pl-[28px] font-leagueSpartan outline-1 outline-white/20`}
                     type="button"
                   >
                     <span className="text-[12px] font-bold leading-[25px] tracking-[2.57px] text-white/50">
