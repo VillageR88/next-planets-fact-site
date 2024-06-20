@@ -1,7 +1,7 @@
 import dataJson from '@/public/assets/data.json';
 import Link from 'next/link';
 import { tPlanet } from '../_lib/interfaces';
-import ButtonMobileMenu from '../components/ButtonMobileMenu';
+import ButtonMobileMenu from './ButtonMobileMenu';
 
 const titleLogo = 'THE PLANETS';
 
@@ -36,7 +36,7 @@ export default function Navbar({ planet, mode }: { planet: string; mode: string 
             </li>
           ))}
         </ul>
-        <ButtonMobileMenu />
+        <ButtonMobileMenu planet={planet} mode={mode} />
       </div>
       <div className="h-px w-full border-b border-white/20" />
     </nav>

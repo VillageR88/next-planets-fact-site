@@ -3,7 +3,7 @@ import Image from 'next/image';
 import iconSource from '@/public/assets/icon-source.svg';
 import dataJson from '@/public/assets/data.json';
 import Link from 'next/link';
-import Navbar from '@/app/home/navbar';
+import LayoutHome from '@/app/components/layout';
 
 const bgColor = {
   mercury: 'bg-[#419EBB]',
@@ -50,8 +50,7 @@ export default function Planet({ params }: { params: { planet: string; mode: str
   const additionalImage = params.mode === links.geology ? data.images.geology.slice(1) : undefined;
   console.log(data[Object.entries(links).find(([, value]) => value === params.mode)?.[0] as keyof typeof links].source);
   return (
-    <>
-      <Navbar planet={params.planet} mode={params.mode} />
+    <LayoutHome params={params}>
       <div className="mx-auto flex max-w-[1110px] flex-col justify-between xl:flex-row">
         <div className="relative mx-auto flex size-[369px] min-h-[369px] translate-y-[10%] scale-75 flex-col items-center justify-center xl:mx-0 xl:mt-[100px] xl:size-[613px] xl:min-h-fit xl:translate-y-0 xl:scale-100">
           <ImagePlanet src={srcPlanet[params.mode as keyof typeof srcPlanet]} alt={`Image of ${data.name}`} />
@@ -131,6 +130,6 @@ export default function Planet({ params }: { params: { planet: string; mode: str
           </li>
         ))}
       </ul>
-    </>
+    </LayoutHome>
   );
 }
