@@ -68,7 +68,7 @@ export default function Planet({ params }: { params: { planet: string; mode: str
   return (
     <LayoutHome params={params}>
       <div className="mx-auto flex max-w-[1110px] flex-col justify-between xl:flex-row">
-        <ul className="mx-auto mt-[39px] flex h-[176px] w-full max-w-[327px] justify-between gap-[16px] md:hidden">
+        <ul className="mx-auto mt-[39px] flex w-full max-w-[327px] justify-between gap-[16px] md:hidden md:h-[176px]">
           {Object.values(Mode).map((item, index) => (
             <li key={index}>
               <Link href={`/${params.planet}/${links[item]}`} passHref>
@@ -140,7 +140,7 @@ export default function Planet({ params }: { params: { planet: string; mode: str
           </ul>
         </div>
       </div>
-      <ul className="mx-auto mt-[27px] flex w-full max-w-[327px] flex-col justify-between gap-[30px] md:max-w-[689px] md:flex-row xl:mt-[87px] xl:max-w-[1110px]">
+      <ul className="mx-auto mt-[27px] flex w-full max-w-[327px] flex-col justify-between gap-[30px] pb-[40px] md:max-w-[689px] md:flex-row xl:mt-[87px] xl:max-w-[1110px]">
         {[
           { title: titleRotation, description: data.rotation },
           {
