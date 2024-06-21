@@ -96,8 +96,8 @@ export default function Planet({ params }: { params: { planet: string; mode: str
             />
           )}
         </div>
-        <div className="mx-auto mt-[79px] flex w-[689px] flex-row items-center justify-between xl:mx-0 xl:mt-[126px] xl:h-[541px] xl:w-[350px] xl:flex-col xl:justify-normal">
-          <div className="flex w-[321px] flex-col xl:w-fit">
+        <div className="mx-auto mt-[79px] flex flex-row items-center justify-center text-center md:w-[689px] md:justify-between md:text-start xl:mx-0 xl:mt-[126px] xl:h-[541px] xl:w-[350px] xl:flex-col xl:justify-normal">
+          <div className="flex w-[321px] flex-col items-center md:items-stretch xl:w-fit">
             <h1>{data.name.toUpperCase()}</h1>
             <p className="mt-[23px]">
               {
@@ -140,7 +140,7 @@ export default function Planet({ params }: { params: { planet: string; mode: str
           </ul>
         </div>
       </div>
-      <ul className="mx-auto mt-[27px] flex w-full max-w-[689px] justify-between gap-[30px] xl:mt-[87px] xl:max-w-[1110px]">
+      <ul className="mx-auto mt-[27px] flex w-full max-w-[327px] flex-col justify-between gap-[30px] md:max-w-[689px] md:flex-row xl:mt-[87px] xl:max-w-[1110px]">
         {[
           { title: titleRotation, description: data.rotation },
           {
@@ -154,7 +154,7 @@ export default function Planet({ params }: { params: { planet: string; mode: str
           },
         ].map((item, index) => (
           <li
-            className="flex h-[88px] w-[164px] flex-col items-start justify-center gap-[6px] pl-[23px] outline outline-1 outline-white/20 xl:h-[128px] xl:w-[255px] xl:gap-[4px]"
+            className="flex h-[88px] items-center justify-between gap-[6px] px-[24px] pl-[23px] outline outline-1 outline-white/20 md:w-[164px] md:flex-col md:items-start md:justify-center md:pr-0 xl:h-[128px] xl:w-[255px] xl:gap-[4px]"
             key={index}
           >
             <h3 className="text-white/50">{item.title}</h3>

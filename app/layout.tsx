@@ -38,6 +38,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className={`${antonio.variable} ${leagueSpartan.variable} mx-auto w-full max-w-[90em] overflow-x-clip bg-[#070724]`}
       >
         <Image
+          priority
           className="absolute left-0 top-0 -z-10 size-full object-cover"
           width={10000}
           height={1}
