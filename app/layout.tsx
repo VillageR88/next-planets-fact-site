@@ -2,9 +2,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Antonio, League_Spartan } from 'next/font/google';
 import Image from 'next/image';
-import backgroundImage from '@/public/assets/starter-code/assets/background-stars.svg';
+import backgroundImage from '@/public/assets/background-stars.svg';
 import { ReactNode } from 'react';
-import DataProvider from './_lib/DataContext';
 
 const antonio = Antonio({
   display: 'swap',
@@ -38,8 +37,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`${antonio.variable} ${leagueSpartan.variable} mx-auto w-full max-w-[90em] overflow-x-clip bg-[#070724]`}
       >
-        <Image className="absolute object-cover" fill src={backgroundImage as string} alt="background image" />
-        <DataProvider>{children}</DataProvider>
+        <Image
+          priority
+          className="absolute left-0 top-0 -z-10 size-full object-cover"
+          width={10000}
+          height={1}
+          src={backgroundImage as string}
+          alt="background image"
+        />
+        {children}
       </body>
     </html>
   );
