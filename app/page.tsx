@@ -1,5 +1,13 @@
-'use client';
+import { redirect } from 'next/navigation';
+import { tPlanet } from './_lib/interfaces';
+import dataJson from '@/public/assets/data.json';
 
 export default function Home() {
-  return <main className="mt-[40px] grid size-fit gap-[40px] md:grid-cols-2 xl:grid-cols-4">123</main>;
+  const overview = '/overview';
+  const startPath = (dataJson as tPlanet[])
+    .find((planet) => planet.name === 'Mercury')
+    ?.name.toLowerCase()
+    .concat(overview);
+  if (!startPath) return;
+  redirect(startPath);
 }
