@@ -16,6 +16,17 @@ const bgColor = {
   neptune: 'bg-[#2D68F0]',
 };
 
+const borderColor = {
+  mercury: 'border-[#419EBB]',
+  venus: 'border-[#EDA249]',
+  earth: 'border-[#6D2ED5]',
+  mars: 'border-[#D14C32]',
+  jupiter: 'border-[#D83A34]',
+  saturn: 'border-[#CD5120]',
+  uranus: 'border-[#1EC1A2]',
+  neptune: 'border-[#2D68F0]',
+};
+
 const titleSource = 'Source :';
 const titleWikipedia = 'Wikipedia';
 const titleRotation = 'ROTATION TIME';
@@ -32,6 +43,11 @@ const titleButtons = {
   overview: 'OVERVIEW',
   structure: 'INTERNAL STRUCTURE',
   geology: 'SURFACE GEOLOGY',
+};
+const titleButtonsMobile = {
+  overview: 'OVERVIEW',
+  structure: 'STRUCTURE',
+  geology: 'SURFACE',
 };
 const links = {
   overview: 'overview',
@@ -52,6 +68,22 @@ export default function Planet({ params }: { params: { planet: string; mode: str
   return (
     <LayoutHome params={params}>
       <div className="mx-auto flex max-w-[1110px] flex-col justify-between xl:flex-row">
+        <ul className="mx-auto mt-[39px] flex h-[176px] w-full max-w-[327px] justify-between gap-[16px] md:hidden">
+          {Object.values(Mode).map((item, index) => (
+            <li key={index}>
+              <Link href={`/${params.planet}/${links[item]}`} passHref>
+                <button
+                  className={`${params.mode === links[item] ? borderColor[params.planet as keyof typeof bgColor] : 'border-transparent transition-colors duration-100 hover:bg-[#D8D8D8]/20'} flex h-[48px] w-[80px] items-center justify-center border-b-4 font-leagueSpartan`}
+                  type="button"
+                >
+                  <span className="text-[9px] font-bold leading-[25px] tracking-[2.57px] text-white">
+                    {titleButtonsMobile[item]}
+                  </span>
+                </button>
+              </Link>
+            </li>
+          ))}
+        </ul>
         <div className="relative mx-auto flex size-[369px] min-h-[369px] translate-y-[10%] scale-75 flex-col items-center justify-center xl:mx-0 xl:mt-[100px] xl:size-[613px] xl:min-h-fit xl:translate-y-0 xl:scale-100">
           <ImagePlanet src={srcPlanet[params.mode as keyof typeof srcPlanet]} alt={`Image of ${data.name}`} />
           {additionalImage && (
@@ -87,7 +119,7 @@ export default function Planet({ params }: { params: { planet: string; mode: str
               </Link>
             </div>
           </div>
-          <ul className="mt-[39px] flex h-[176px] w-[281px] flex-col gap-[16px] xl:w-full">
+          <ul className="mt-[39px] hidden h-[176px] w-[281px] flex-col gap-[16px] md:flex xl:w-full">
             {Object.values(Mode).map((item, index) => (
               <li key={index}>
                 <Link href={`/${params.planet}/${links[item]}`} passHref>
