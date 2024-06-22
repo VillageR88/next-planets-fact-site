@@ -55,6 +55,16 @@ const links = {
   geology: 'surface-geology',
 };
 
+export function generateStaticParams() {
+  const paths: { planet: string; mode: string }[] = [];
+  dataJson.forEach((planet) => {
+    Object.values(links).forEach((mode) => {
+      paths.push({ planet: planet.name.toLowerCase(), mode });
+    });
+  });
+  return paths;
+}
+
 export default function Planet({ params }: { params: { planet: string; mode: string } }) {
   const data = dataJson.find((item) => item.name.toLowerCase() === params.planet);
   if (!data) return;
